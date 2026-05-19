@@ -1030,7 +1030,6 @@ plot_map(usd = 10, dat = dat_all, transaction = "P2P Off-Us Transfer",
 plot_map(usd = 10, dat = dat_all, transaction = "P2P On-Us Transfer",
          group = "Fintech")
 
-#uganda, Nigeria, ivory coast, paraguay, Rwanda, 
 usd=10
 final_dat = dat_all %>% 
   group_by(country, transaction_type, fsp_type) %>% 
