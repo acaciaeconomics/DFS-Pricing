@@ -910,10 +910,10 @@ dat_all = dat_all %>%
   mutate(country_code = countrycode(country, origin = 'country.name', destination = 'iso4217c' ))
 
 
-#Exchange rate function
+#Exchange rate function - date chosen is 14 May 2026.
 get_exch = function(from, to){
   pair  = paste0(from,to,'=X')
-  data  = getSymbols(pair, src = "yahoo", from = Sys.Date(), auto.assign = FALSE)
+  data  = getSymbols(pair, src = "yahoo", "2026-05-14", auto.assign = FALSE)
   as.numeric(last(Cl(data)))
   
   
@@ -1042,5 +1042,3 @@ final_dat = dat_all %>%
 
 library(writexl)
 write_xlsx(final_dat, "global_price_dataset.xlsx")
-
-
