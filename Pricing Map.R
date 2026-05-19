@@ -41,16 +41,6 @@ dat_all = dfs_pricing_clean %>%
          transaction_type = ifelse(transaction_type=="P2p Off-Network Transfer", "P2P Off-Us Transfer", transaction_type),
          fee_pct = fee_pct/100) #We work with decimal rather than % for the remainder of this workbook
 
-# #Errors of duplicates in Kenya
-# #Removing some erroneous values, excluding coop bank in Kenya & kcb bank
-# dat_duplicates_removed = dat_all %>% 
-#   filter(
-#     ipa_data == 1 & country == "Kenya",
-#      !(provider %in% c("kcb bank","co-operative bank of kenya"))
-#      )%>% 
-#   distinct()  
-
-
 
 #-------------------------------------------------------------------------------
 #Countries to add
@@ -930,16 +920,16 @@ get_exch = function(from, to){
 }
 
 #Testing
-#get_exch(from = "USD", to = "AUD")
+get_exch(from = "USD", to = "AUD")
 
-## Commented out for now
-# countries = data.frame( country_code = unique(dat_all$country_code))
-# 
-# countries = countries %>%
-#   rowwise() %>%
-#   mutate(exchange_rate = get_exch("USD", country_code),
-#          date_collection_exch = Sys.Date())
-# save(countries, file = "countries")
+# Commented out for now
+countries = data.frame( country_code = unique(dat_all$country_code))
+
+countries = countries %>%
+  rowwise() %>%
+  mutate(exchange_rate = get_exch("USD", country_code),
+         date_collection_exch = Sys.Date())
+save(countries, file = "countries")
 
 load('countries')
 
@@ -1052,7 +1042,6 @@ final_dat = dat_all %>%
 
 
 library(writexl)
-write_xlsx(dat_all, "global_price_dataset.xlsx")
+write_xlsx(final_dat, "global_price_dataset.xlsx")
 
 
-providers = data.frame(unique(dat_all$provider))
