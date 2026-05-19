@@ -1,6 +1,6 @@
 In this project we build a data set of dfs prices for mobile banking, mobile money and fintechs across a range of roughly 23 countries.
 
-We integrate IPA data, alongside our own research to do this. IPA data can be found at this link: https://dfs-prices.poverty-action.org/data-methodology.html
+We integrate Innovations for Poverty Action (IPA) data, alongside our own research to do this. The IPA data can be found at this link: https://dfs-prices.poverty-action.org/data-methodology.html
 
 Our methodology is as follows:
 1. For each country we assess the top providers for electronic money tranfsers in banking and mobile money sectors. We classify firms that provide these services as fintechs,
