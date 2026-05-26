@@ -289,6 +289,20 @@ dat_all = dat_all %>%
     add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "Bank-to-Wallet Transfer", 
               value_min = 1000, provider = "Stanbic Bank", value_max = Inf, fee = 10, exchange_rate = 11.20) %>% 
   
+  
+  #Mobile Money MTN
+  #https://mtn4186.zendesk.com/hc/en-us/articles/5350280502674-What-is-the-rate-of-the-E-Levy#:~:text=NB%3A%20P2P%20transfers%20of%20up,upgrade%20my%20MoMo%20wallet%20limit%3F
+    add_row(country = "Ghana", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+            value_min = 0, provider = "MTN", value_max = 100, tax_pct = 1,fee = 0) %>%
+    add_row(country = "Ghana", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+            value_min = 101, provider = "MTN", value_max = 1000, fee_pct = 0.0075, tax_pct = 1) %>% 
+    
+    add_row(country = "Ghana", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+            value_min = 1001, provider = "MTN", value_max = Inf, fee = 7.5, tax_pct = 1) %>% 
+  
+    add_row(country = "Ghana", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+            value_min = 0, provider = "MTN", value_max = Inf, fee_pct = 0.0075, tax_pct = 1) %>% 
+    
   #-------------------------------------------------------------------------------------------------
   #Malaysia 
   #https://www.touchngo.com.my/consumer/payments/ewallet-transfer/
