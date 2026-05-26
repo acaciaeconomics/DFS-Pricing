@@ -1207,14 +1207,25 @@ plot_map(usd = 10, dat = dat_all, transaction = "P2P Off-Us Transfer",
 plot_map(usd = 10, dat = dat_all, transaction = "P2P On-Us Transfer",
          group = "Fintech")
 
-usd=10
-final_dat = dat_all %>% 
+rm(usd)
+usd_range=1:10
+
+final_dat = list()
+for (usd in usd_range){
+  
+curr_dat = dat_all %>% 
   group_by(country, transaction_type, fsp_type) %>% 
   mutate(fee_usd = ifelse(fee_pct>0,usd*fee_pct,fee_usd))  %>%
   filter(value_min_usd <= usd,
          value_max_usd >= usd,
          transaction_type %in% c("P2P On-Us Transfer", "P2P Off-Us Transfer")) %>% 
-  summarise(average_price_usd = mean(fee_usd))
+  summarise(average_price_usd = mean(fee_usd)) %>% 
+  ungroup() %>% 
+  mutate(USD_amnt = usd)
+  final_dat[[usd]] = curr_dat
 
+}
+
+final_dat = do.call(rbind, final_dat)
 library(writexl)
 write_xlsx(final_dat, "global_price_dataset.xlsx")
