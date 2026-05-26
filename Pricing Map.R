@@ -303,6 +303,163 @@ dat_all = dat_all %>%
     add_row(country = "Ghana", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
             value_min = 0, provider = "MTN", value_max = Inf, fee_pct = 0.0075, tax_pct = 1) %>% 
     
+  
+  #Zambia
+  # Exchange rate as at 26/05/2026: https://www.oanda.com/currency-converter/en/?from=USD&to=ZMW&amount=1
+  # Airtel Money Transfer to Other Registered AM No.
+  #https://www.google.com/search?q=Zambia+Currency+symbol%3F&sca_esv=e9b8a03e27f61160&sxsrf=ANbL-n6vgVszplMtktBgnIIJP16tQ-yHNA%3A1779785573669&ei=ZV8VatXOKMWhhbIPzMfC-Ao&biw=1536&bih=826&ved=0ahUKEwiVlZT3ydaUAxXFUEEAHcyjEK8Q4dUDCBA&uact=5&oq=Zambia+Currency+symbol%3F&gs_lp=Egxnd3Mtd2l6LXNlcnAiF1phbWJpYSBDdXJyZW5jeSBzeW1ib2w_MgUQABiABDIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjILEAAYgAQYigUYhgMyCxAAGIAEGIoFGIYDMgUQABjvBUiPDlCYBFjJDHABeAGQAQCYAaYCoAGXD6oBAzItN7gBA8gBAPgBAZgCCKACsw_CAgoQABhHGNYEGLADwgINEAAYgAQYigUYQxiwA8ICDhAAGOQCGNYEGLAD2AEBwgIXEC4Y3AYYuAYY2gYY2AIYyAMYsAPYAQHCAgoQABiABBiKBRhDwgIIEAAYgAQYogSYAwCIBgGQBhC6BgYIARABGAmSBwUxLjAuN6AHhC2yBwMyLTe4B60PwgcFMC43LjHIBxOACAE&sclient=gws-wiz-serp
+  
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 1, provider = "Airtel", value_max = 150, fee = 0.42, tax = 0.32, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 150, provider = "Airtel", value_max = 300, fee = 0.90, tax = 0.40, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 300, provider = "Airtel", value_max = 500, fee = 0.80, tax = 0.80, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 500, provider = "Airtel", value_max = 1000, fee = 1.00, tax = 2.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 1000, provider = "Airtel", value_max = 3000, fee = 2.00, tax = 4.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 3000, provider = "Airtel", value_max = 5000, fee = 3.00, tax = 7.50, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 5000, provider = "Airtel", value_max = 10000, fee = 4.00, tax = 8.00, exchange_rate = 18.82) %>% 
+  
+  # Airtel Money Transfer to Other Networks & Wallets
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 1, provider = "Airtel", value_max = 150, fee = 2.50, tax = 0.32, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 150, provider = "Airtel", value_max = 300, fee = 5.00, tax = 0.40, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 300, provider = "Airtel", value_max = 500, fee = 10.00, tax = 0.80, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 500, provider = "Airtel", value_max = 1000, fee = 14.50, tax = 2.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 1000, provider = "Airtel", value_max = 3000, fee = 19.20, tax = 4.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 3000, provider = "Airtel", value_max = 5000, fee = 29.00, tax = 7.50, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 5000, provider = "Airtel", value_max = 10000, fee = 48.50, tax = 8.00, exchange_rate = 18.82) %>% 
+  
+  # International Money Transfer (Transfer to other countries)
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 1, provider = "Airtel", value_max = 100, fee = 3.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 100, provider = "Airtel", value_max = 200, fee = 6.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 200, provider = "Airtel", value_max = 400, fee = 10.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 400, provider = "Airtel", value_max = 800, fee = 15.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 800, provider = "Airtel", value_max = 1500, fee = 25.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 1500, provider = "Airtel", value_max = 3000, fee = 40.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 3000, provider = "Airtel", value_max = 6000, fee = 65.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 6000, provider = "Airtel", value_max = 10000, fee = 80.00, exchange_rate = 18.82) %>% 
+  
+  # Airtel Money Wallet-to-Bank Transfer
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "Wallet-to-Bank Transfer", 
+          value_min = 1, provider = "Airtel", value_max = 150, fee = 2.50, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "Wallet-to-Bank Transfer", 
+          value_min = 150, provider = "Airtel", value_max = 300, fee = 3.50, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "Wallet-to-Bank Transfer", 
+          value_min = 300, provider = "Airtel", value_max = 500, fee = 5.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "Wallet-to-Bank Transfer", 
+          value_min = 500, provider = "Airtel", value_max = 1000, fee = 15.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "Wallet-to-Bank Transfer", 
+          value_min = 1000, provider = "Airtel", value_max = 3000, fee = 20.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "Wallet-to-Bank Transfer", 
+          value_min = 3000, provider = "Airtel", value_max = 5000, fee = 30.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "Wallet-to-Bank Transfer", 
+          value_min = 5000, provider = "Airtel", value_max = 10000, fee = 50.00, exchange_rate = 18.82) %>% 
+
+#Zambia
+# Exchange rate as at 26/05/2026: https://www.oanda.com/currency-converter/en/?from=USD&to=ZMW&amount=1
+
+# Transfer to ( Zamtel )
+#http://www.zamtel.zm/docs/Zamtel-Money-Tariff-Guide-2025.pdf
+add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+        value_min = 5.00, provider = "Zamtel", value_max = 150.00, fee = 0.50, tax = 0.16, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 151.00, provider = "Zamtel", value_max = 300.00, fee = 1.00, tax = 0.20, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 301.00, provider = "Zamtel", value_max = 500.00, fee = 1.00, tax = 0.40, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 501.00, provider = "Zamtel", value_max = 1000.00, fee = 1.50, tax = 1.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 1001.00, provider = "Zamtel", value_max = 3000.00, fee = 2.80, tax = 1.60, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 3001.00, provider = "Zamtel", value_max = 5000.00, fee = 4.00, tax = 2.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 5001.00, provider = "Zamtel", value_max = 10000.00, fee = 5.50, tax = 3.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+          value_min = 10000.00, provider = "Zamtel", value_max = Inf, fee = 6.80, tax = 3.60, exchange_rate = 18.82) %>% 
+  
+  # Transfer to ( Non-Zamtel )
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 5.00, provider = "Zamtel", value_max = 150.00, fee = 3.00, tax = 0.16, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 151.00, provider = "Zamtel", value_max = 300.00, fee = 5.00, tax = 0.20, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 301.00, provider = "Zamtel", value_max = 500.00, fee = 10.00, tax = 0.40, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 501.00, provider = "Zamtel", value_max = 1000.00, fee = 15.00, tax = 1.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 1001.00, provider = "Zamtel", value_max = 3000.00, fee = 20.00, tax = 1.60, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 3001.00, provider = "Zamtel", value_max = 5000.00, fee = 30.00, tax = 2.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 5001.00, provider = "Zamtel", value_max = 10000.00, fee = 50.00, tax = 3.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 10000.00, provider = "Zamtel", value_max = Inf, fee = 50.00, tax = 3.60, exchange_rate = 18.82) %>% 
+  
+  # International Transfer
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 5.00, provider = "Zamtel", value_max = 50.00, fee = 5.00, tax = 0.16, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 51.00, provider = "Zamtel", value_max = 300.00, fee = 12.00, tax = 0.16, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 301.00, provider = "Zamtel", value_max = 650.00, fee = 18.00, tax = 0.40, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 651.00, provider = "Zamtel", value_max = 1250.00, fee = 25.00, tax = 1.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 1251.00, provider = "Zamtel", value_max = 2500.00, fee = 35.00, tax = 1.60, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 2501.00, provider = "Zamtel", value_max = 3800.00, fee = 50.00, tax = 1.60, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 3801.00, provider = "Zamtel", value_max = 5100.00, fee = 70.00, tax = 2.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 5101.00, provider = "Zamtel", value_max = 7500.00, fee = 85.00, tax = 3.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 7501.00, provider = "Zamtel", value_max = 10000.00, fee = 100.00, tax = 3.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "International Money Transfer", 
+          value_min = 10000.00, provider = "Zamtel", value_max = Inf, fee = 100.00, tax = 3.60, exchange_rate = 18.82) %>% 
+  
+  
+  #Mobile Banking 
+  
+  #Zambia
+  #https://www.zanaco.co.zm/download/retail-banking-tariff-guide/
+  # Exchange rate as at 26/05/2026: https://www.oanda.com/currency-converter/en/?from=USD&to=ZMW&amount=1
+  
+  # Mobile Banking (XAPIT) Transfers
+  add_row(country = "Zambia", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer", 
+          value_min = 0, provider = "Zanaco", value_max = Inf, fee = 0, exchange_rate = 18.82) %>% # Funds Transfer Internal to Zanaco Account
+  
+  add_row(country = "Zambia", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 0, provider = "Zanaco", value_max = Inf, notes = "DDACC (Electronic)", fee = 10.00, exchange_rate = 18.82) %>% 
+  
+  add_row(country = "Zambia", fsp_type = "Mobile Banking", transaction_type = "Bank-to-Wallet Transfer", 
+          value_min = 0, provider = "Zanaco", value_max = Inf, notes = "Cash Out to Mobile Number (Zanaco or Non Zanaco)", fee = 11.00, exchange_rate = 18.82) %>% 
+  
+  
+  #Stanbic Bank
+  #https://www.stanbicbank.co.zm/static_file/Zambia/filedownloads/SBZ_Tarrif_Guide_2025.pdf
+  add_row(country = "Zambia", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer", 
+          value_min = 0, provider = "Zanaco", value_max = Inf, fee = 0.00, exchange_rate = 18.82) %>% 
+  add_row(country = "Zambia", fsp_type = "Mobile Banking", transaction_type = "Bank To Wallet", 
+          value_min = 0, provider = "Zanaco", value_max = Inf, fee = 12, exchange_rate = 18.82) %>%
   #-------------------------------------------------------------------------------------------------
   #Malaysia 
   #https://www.touchngo.com.my/consumer/payments/ewallet-transfer/
@@ -921,13 +1078,19 @@ library(quantmod)
 library(countrycode)
 
 dat_all = dat_all %>% 
-  mutate(country_code = countrycode(country, origin = 'country.name', destination = 'iso4217c' ))
+  mutate(country_code = countrycode(country,
+                                    origin = 'country.name',
+                                    destination = 'iso4217c' ,
+                                    custom_match = c('Kenya' = 'KES')))
 
+#Some testing
+pair = "USDKES=X"
+data  = getSymbols(pair, src = "yahoo", from = "2026-05-14", auto.assign = FALSE)
 
 #Exchange rate function - date chosen is 14 May 2026.
 get_exch = function(from, to){
   pair  = paste0(from,to,'=X')
-  data  = getSymbols(pair, src = "yahoo", "2026-05-14", auto.assign = FALSE)
+  data  = getSymbols(pair, src = "yahoo", from ="2026-05-14",to = "2026-05-15", auto.assign = FALSE)
   as.numeric(last(Cl(data)))
   
   
@@ -1047,12 +1210,11 @@ plot_map(usd = 10, dat = dat_all, transaction = "P2P On-Us Transfer",
 usd=10
 final_dat = dat_all %>% 
   group_by(country, transaction_type, fsp_type) %>% 
+  mutate(fee_usd = ifelse(fee_pct>0,usd*fee_pct,fee_usd))  %>%
   filter(value_min_usd <= usd,
          value_max_usd >= usd,
          transaction_type %in% c("P2P On-Us Transfer", "P2P Off-Us Transfer")) %>% 
-  summarise(average_price_usd = mean(fee_usd)) 
-  
-
+  summarise(average_price_usd = mean(fee_usd))
 
 library(writexl)
 write_xlsx(final_dat, "global_price_dataset.xlsx")
