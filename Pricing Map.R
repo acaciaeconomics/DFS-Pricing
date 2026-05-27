@@ -524,14 +524,6 @@ add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P O
   
   
   #-------------------------------------------------------------------------------------------------
-  #Philippines
-  #https://help.grab.com/passenger/en-ph/360029791152-How-do-I-transfer-my-GrabPay-balance-to-a-bank-account-or-another-e-wallet#:~:text=Facility%3A%20Users%20can%20transfer%20a,Tap%20on%20'Send'
-  add_row(country = "Philippines", fsp_type = "Fintech", transaction_type = "P2P On-Us Transfer", 
-          value_min = 0, provider = "Grab Pay", value_max = Inf, fee = 0, exchange_rate = 61.5134) %>%  #exchange rate as at 06/05/2026 : https://www.oanda.com/currency-converter/en/?from=USD&to=THB&amount=1
-  add_row(country = "Philippines", fsp_type = "Fintech", transaction_type = "P2P Off-Us Transfer", 
-        value_min = 0, provider = "Grab pay", value_max = Inf, fee = 15, exchange_rate = 61.5134)  %>% 
-  
-  #-------------------------------------------------------------------------------------------------
   #Singapore
   #https://www.grab.com/sg/pay/funds-transfer/
   add_row(country = "Singapore", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
@@ -655,53 +647,55 @@ add_row(country = "Zambia", fsp_type = "Mobile Money", transaction_type = "P2P O
           value_min = 200000, provider = "Airpak", value_max =Inf , fee = 1000, exchange_rate=452.371) %>% 
   #-------------------------------------------------------------------------------------------------
   #Philipines  
+  
+  #https://help.grab.com/passenger/en-ph/360029791152-How-do-I-transfer-my-GrabPay-balance-to-a-bank-account-or-another-e-wallet#:~:text=Facility%3A%20Users%20can%20transfer%20a,Tap%20on%20'Send'
+    add_row(country = "Philippines", fsp_type = "Fintech", transaction_type = "P2P On-Us Transfer", 
+            value_min = 0, provider = "Grab Pay", value_max = Inf, fee = 0, exchange_rate = 61.5134) %>%  #exchange rate as at 06/05/2026 : https://www.oanda.com/currency-converter/en/?from=USD&to=THB&amount=1
+    add_row(country = "Philippines", fsp_type = "Fintech", transaction_type = "P2P Off-Us Transfer", 
+            value_min = 0, provider = "Grab pay", value_max = Inf, fee = 15, exchange_rate = 61.5134)  %>% 
+  
+  #Assuming all below are off us fees done through instapay
   #https://www.bsp.gov.ph/PaymentAndSettlement/Fees.pdf
-  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
-          value_min = 0, provider = "BDO", value_max = Inf, fee = 10,exchange_rate=60.9896) %>% 
   add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer",    
-          value_min = 0, provider = "BDO", value_max =Inf , fee = 10, exchange_rate=60.9896) %>% 
+          value_min = 0, provider = "BDO", value_max = Inf , fee = 10, exchange_rate=60.9896) %>% 
+  #https://www.bdo.com.ph/personal/digital/send-money#UmvRdztC0
+  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer",    
+          value_min = 0, provider = "BDO", value_max = Inf , fee = 0, exchange_rate=60.9896) %>% 
   
-  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
-          value_min = 0, provider = "Union Bank of the Philippines", value_max = Inf, fee = 10,exchange_rate=60.9896) %>% 
   add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer",    
-          value_min = 0, provider = "Union Bank of the Philippines", value_max =Inf , fee = 10, exchange_rate=60.9896) %>% 
+          value_min = 0, provider = "Union Bank of the Philippines", value_max =Inf , fee = 10, exchange_rate=60.9896) %>%
+  #https://www.unionbankph.com/help-center/article/2323/how-much-will-be-charged-for-transactions-made-through-unionbank-online
+  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer",    
+          value_min = 0, provider = "Union Bank of the Philippines", value_max =Inf , fee = 0, exchange_rate=60.9896) %>%
   
-  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
-          value_min = 0, provider = "Union Bank of the Philippines", value_max = Inf, fee = 10,exchange_rate=60.9896) %>% 
-  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer",    
-          value_min = 0, provider = "Union Bank of the Philippines", value_max =Inf , fee = 10, exchange_rate=60.9896) %>% 
+  # [InstaPay] A fee of P25.00 or 1.5% of the transacted amount, whichever is higher, is charged to the Individual clients via PayNow.
+  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
+          value_min = 0, provider = "Metropolitan Bank and Trust Company", value_max = 1666.6667, notes = "Midpoint of 8-25 taken.", exchange_rate=60.9896) %>% 
+ 
+   add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer",    
+          value_min = 1667, provider = "Metropolitan Bank and Trust Company", value_max = Inf, fee_pct = 0.015, notes = "Midpoint of 8-25 taken.", exchange_rate=60.9896) %>% 
   
-  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
-          value_min = 0, provider = "Metropolitan Bank and Trust Company", value_max = Inf, fee = 16.5, notes = "Midpoint of 8-25 taken.", exchange_rate=60.9896) %>% 
-  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer",    
-          value_min = 0, provider = "Metropolitan Bank and Trust Company", value_max =Inf , fee = 16.5, notes = "Midpoint of 8-25 taken.", exchange_rate=60.9896) %>% 
+  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer",    
+          value_min = 0, provider = "Metropolitan Bank and Trust Company", value_max = Inf, fee_pct = 0, notes = "Midpoint of 8-25 taken.", exchange_rate=60.9896) %>% 
   
-  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
-          value_min = 0, provider = "Metropolitan Bank and Trust Company", value_max = Inf, fee = 16.5, notes = "Midpoint of 8-25 taken.", exchange_rate=60.9896) %>% 
-  add_row(country = "Philippines", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer",    
-          value_min = 0, provider = "Metropolitan Bank and Trust Company", value_max =Inf , fee = 16.5, notes = "Midpoint of 8-25 taken.", exchange_rate=60.9896) %>% 
+
+  
+  
   #Mobile money - taken instapay fees
   #G-exchange
-  add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
-          value_min = 0, provider = "G-exchange", value_max = Inf, fee = 15, exchange_rate=60.9896) %>% 
+  #https://gcash.com/terms-and-conditions/fees
   add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer",    
           value_min = 0, provider = "G-exchange", value_max =Inf , fee = 15, exchange_rate=60.9896) %>% 
+  add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer",    
+          value_min = 0, provider = "G-exchange", value_max =Inf , fee = 0, exchange_rate=60.9896) %>% 
   
-  add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
-          value_min = 0, provider = "G-exchange", value_max = Inf, fee = 15, exchange_rate=60.9896) %>% 
+  #https://support.maya.ph/s/article/What-are-the-fees-charged-to-my-account
+  add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer",    
+          value_min = 0, provider = "Maya", value_max =Inf , fee = 0, exchange_rate=60.9896)  %>% 
   add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer",    
-          value_min = 0, provider = "G-exchange", value_max =Inf , fee = 15, exchange_rate=60.9896) %>% 
+          value_min = 0, provider = "Maya", value_max =Inf , fee = 15, exchange_rate=60.9896)  %>% 
   
-  add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
-          value_min = 0, provider = "Maya Bank", value_max = Inf, fee = 15, exchange_rate=60.9896) %>% 
-  add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer",    
-          value_min = 0, provider = "Maya Bank", value_max =Inf , fee = 15, exchange_rate=60.9896)  %>% 
-  
-  add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer",    #exchange rate as at 12/05/2025: https://www.oanda.com/currency-converter/en/?from=USD&to=PHP&amount=1
-          value_min = 0, provider = "GoTyme Bank", value_max = Inf, fee = 4.5, notes = "Midpoint of 0-9 taken.", exchange_rate=60.9896) %>%
-  add_row(country = "Philippines", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer",
-          value_min = 0, provider = "GoTyme Bank", value_max =Inf , fee = 4.5, notes = "Midpoint of 0-9 taken.", exchange_rate=60.9896) %>% 
-  
+
   #-------------------------------------------------------------------------------------------------
   #Australia
   #https://www.nab.com.au/important-information/personal/internet-banking-terms-conditions
@@ -1067,7 +1061,60 @@ add_row(country = "Tanzania", fsp_type = "Mobile Money", transaction_type = "P2P
     add_row(country = "Pakistan", fsp_type = "Mobile Money", transaction_type = "Wallet to Bank", provider = "Upaisa", notes = "monthly cumulative", exchange_rate = 278.60, value_min = 25001, value_max = Inf, fee = 0, fee_pct = 0.001)%>%
   
   
-    mutate(ipa_data = ifelse(is.na(ipa_data),0, ipa_data))
+    #Turkey
+    #https://www.papara.com/en/fees-and-limits
+    add_row(country = "Turkey", fsp_type = "Mobile Money", transaction_type = "P2P On-Us Transfer", 
+            provider = "Turkey", value_min = 0, value_max = Inf, fee = 0) %>%
+    add_row(country = "Turkey", fsp_type = "Mobile Money", transaction_type = "P2P Off-Us Transfer", 
+            provider = "Turkey", value_min = 0, value_max = Inf, fee = 0) %>%
+  
+    #https://www-isbank-com-tr.translate.goog/urun-ve-hizmet-ucretleri?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
+          provider = "Bankasi", value_min = 0, value_max = 8300,notes = "Transfer done through FAST", fee = 7.97) %>%
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
+          provider = "Bankasi", value_min = 8301, value_max = 399000, notes = "Transfer done through FAST", fee = 15.96) %>%
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
+          provider = "Bankasi", value_min = 399001, value_max = Inf, notes = "Transfer done through FAST", fee = 199.41) %>%
+  
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer", 
+          provider = "Bankasi", value_min = 0, value_max = 8300,notes = "Transfer done through FAST", fee = 3.99) %>%
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer", 
+          provider = "Bankasi", value_min = 8301, value_max = 399000, notes = "Transfer done through FAST", fee = 7.98) %>%
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer", 
+          provider = "Bankasi", value_min = 399001, value_max = Inf, notes = "Transfer done through FAST", fee = 99.71) %>%
+  
+  #https://www.ziraatbank.com.tr/en/product-and-service-fees
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
+          provider = "Ziraat", value_min = 0, value_max = 8300,notes = "Transfer done through FAST", fee = 7.97) %>%
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
+          provider = "Bankasi", value_min = 8301, value_max = 399000, notes = "Transfer done through FAST", fee = 15.96) %>%
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
+          provider = "Bankasi", value_min = 399001, value_max = Inf, notes = "Transfer done through FAST", fee = 199.41) %>%
+  
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer", 
+          provider = "Ziraat", value_min = 0, value_max = 8300,notes = "Transfer done through FAST", fee = 3.99) %>%
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer", 
+          provider = "Ziraat", value_min = 8301, value_max = 399000, notes = "Transfer done through FAST", fee = 7.98) %>%
+  
+  add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer", 
+          provider = "Ziraat", value_min = 399001, value_max = Inf, notes = "Transfer done through FAST", fee = 99.71) %>%
+  
+  
+  
+  
+  
+  mutate(ipa_data = ifelse(is.na(ipa_data),0, ipa_data))
   #-------------------------------------------------------------------------------------------------
   
 #-------------------------------------------------------------------------------
@@ -1210,7 +1257,7 @@ plot_map(usd = 10, dat = dat_all, transaction = "P2P On-Us Transfer",
 rm(usd)
 usd_range=1:10
 
-final_dat = list()
+est_dat = list()
 for (usd in usd_range){
   
 curr_dat = dat_all %>% 
@@ -1222,10 +1269,10 @@ curr_dat = dat_all %>%
   summarise(average_price_usd = mean(fee_usd)) %>% 
   ungroup() %>% 
   mutate(USD_amnt = usd)
-  final_dat[[usd]] = curr_dat
+  est_dat[[usd]] = curr_dat
 
 }
 
-final_dat = do.call(rbind, final_dat)
+final_dat = do.call(rbind, est_dat)
 library(writexl)
 write_xlsx(final_dat, "global_price_dataset.xlsx")
