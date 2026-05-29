@@ -31,7 +31,9 @@ dat_all = dfs_pricing_clean %>%
          value_max = as.numeric(value_max)) %>%
   filter(
     !(country %in% c("Myanmar","Colombia","India","Mali","Sierra Leone","Paraguay")), #Paraguay data seems to contain errors
-         !if_any(c(value_max,value_min,fee), ~ .x<0)
+         !if_any(c(value_max,value_min,fee), ~ .x<0),
+    !(country == "Ghana" & provider == "absa bank ghana") #Datapoint has an error  entry. 
+    
          ) %>%  #Change p2p on-net trafs etc to on us off us etc
   mutate(country = ifelse(country == "Cote D'ivoire", "Ivory Coast", country),
          ipa_data = 1,
@@ -39,7 +41,7 @@ dat_all = dfs_pricing_clean %>%
          transaction_type = str_to_title(transaction_type),
          transaction_type = ifelse(transaction_type=="P2p On-Network Transfer", "P2P On-Us Transfer", transaction_type),
          transaction_type = ifelse(transaction_type=="P2p Off-Network Transfer", "P2P Off-Us Transfer", transaction_type),
-         fee_pct = fee_pct/100) #We work with decimal rather than % for the remainder of this workbook
+         fee_pct = fee_pct/100)#We work with decimal rather than % for the remainder of this workbook
 
 
 #-------------------------------------------------------------------------------
@@ -268,27 +270,22 @@ dat_all = dat_all %>%
             value_min = 0, provider = "Stanbic Bank", value_max = Inf, fee = 0, exchange_rate = 11.20) %>% # Inter account transfers 
   
     add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
-              value_min = 0, provider = "Stanbic Bank", value_max = Inf, notes = "ACH transfer",fee = 5, exchange_rate = 11.20) %>%  #exchange rate as at 04/05/2026 :https://www.oanda.com/currency-converter/en/?from=USD&to=GHS&amount=1
-
-      #Removed for now
-      # add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
-      #         value_min = 0, provider = "Stanbic Bank", value_max = Inf, fee = 30, notes = "RTGS transfer",exchange_rate = 11.20) %>% 
-  
-    add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
-              value_min = 0, provider = "Stanbic Bank", value_max = Inf, fee = 10, exchange_rate = 11.20) %>% #Done
+              value_min = 0, provider = "Stanbic Bank", value_max = Inf, fee = 5, exchange_rate = 11.20) %>% #Done
       # GIP Transfers (1% capped at GHS 10)
-  
-    add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
-              value_min = 0, provider = "Stanbic Bank", value_max = 1000, fee = 0.01, notes = "GIP", exchange_rate = 11.20) %>% 
-  
-    add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
-              value_min = 1000, provider = "Stanbic Bank", value_max = Inf, notes = "GIP",fee = 10, exchange_rate = 11.20) %>% 
-     
+    
     add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "Bank-to-Wallet Transfer", 
               value_min = 0, provider = "Stanbic Bank", value_max = 1000, fee = 0.01, exchange_rate = 11.20) %>% 
+  
     add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "Bank-to-Wallet Transfer", 
               value_min = 1000, provider = "Stanbic Bank", value_max = Inf, fee = 10, exchange_rate = 11.20) %>% 
   
+  #Absa
+  #https://www.absa.com.gh/content/dam/ghana/absa/pdf/tariff-guide/tariff-guide.pdf
+  
+  add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 0, provider = "Absa", value_max = 20000, fee_pct = 0.0025, exchange_rate = 11.20) %>% # Inter account transfers 
+  add_row(country = "Ghana", fsp_type = "Mobile Banking", transaction_type = "P2P Off-Us Transfer", 
+          value_min = 20001, provider = "ABsa", value_max = Inf, fee = 50, exchange_rate = 11.20) %>% # Inter account transfers 
   
   #Mobile Money MTN
   #https://mtn4186.zendesk.com/hc/en-us/articles/5350280502674-What-is-the-rate-of-the-E-Levy#:~:text=NB%3A%20P2P%20transfers%20of%20up,upgrade%20my%20MoMo%20wallet%20limit%3F
@@ -1109,11 +1106,6 @@ add_row(country = "Tanzania", fsp_type = "Mobile Money", transaction_type = "P2P
   
   add_row(country = "Turkey", fsp_type = "Mobile Banking", transaction_type = "P2P On-Us Transfer", 
           provider = "Ziraat", value_min = 399001, value_max = Inf, notes = "Transfer done through FAST", fee = 99.71) %>%
-  
-  
-  
-  
-  
   mutate(ipa_data = ifelse(is.na(ipa_data),0, ipa_data))
   #-------------------------------------------------------------------------------------------------
   
@@ -1192,6 +1184,23 @@ cost_func = function(usd, dat, transaction, group){
   return(dat)
   
 }
+
+usd=10; dat= dat_all; transaction = "P2P Off-Us Transfer"; group = "Mobile Banking"
+#Debug check 
+#filter out appropriate bands
+dat = dat %>% 
+  filter(transaction_type == transaction,
+         fsp_type == group,
+         value_min_usd <= usd,
+         value_max_usd >= usd) %>% 
+  mutate(fee_usd = ifelse(fee_pct>0,usd*fee_pct,fee_usd)) %>% 
+  group_by(country) 
+
+# %>% 
+#   summarise(avg_fee_usd = mean(fee_usd)) %>% 
+#   ungroup() %>% 
+#   mutate(fee_is = paste0("USD:",usd))
+
 
 
 plot_map = function(usd, dat , 
